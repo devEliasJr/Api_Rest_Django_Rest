@@ -1,0 +1,38 @@
+# Arquivos e diretórios do sistema
+__pycache__/
+*.py[cod]
+
+# Ambientes virtuais (exemplos, ajuste de acordo com sua ferramenta de criação de ambiente virtual)
+venv/
+env/
+*.env
+
+
+
+# Arquivos de configuração
+*.sqlite3
+*.db
+*.log
+*.ini
+
+# Arquivos de mídia gerados
+media/
+Lib/
+Scripts/
+Include/
+# Dependências geradas pelo pip
+pip-lock.txt
+pip-log.txt
+
+
+# Arquivos IDE (exemplos, ajuste de acordo com sua IDE)
+.vscode/
+.idea/
+
+# Ambiente de desenvolvimento
+db.sqlite3
+db.sqlite3-journal
+.env
+.env.*
+
+# Outros arquivos e diretórios personalizados
