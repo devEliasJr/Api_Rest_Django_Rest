@@ -1,7 +1,10 @@
 from rest_framework import generics, viewsets
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import action
 from rest_framework.generics import get_object_or_404
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .models import Avaliacao, Curso
 from .serializers import AvaliacaoSerializer, CursoSerializer
@@ -12,6 +15,7 @@ API V1 - API View
 """
 
 class CursosAPIView(generics.ListCreateAPIView):
+
     queryset = Curso.objects.all()
     serializer_class = CursoSerializer
 
@@ -21,6 +25,7 @@ class CursoAPIView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class AvaliacoesAPIView(generics.ListCreateAPIView):
+    
     queryset = Avaliacao.objects.all()
     serializer_class = AvaliacaoSerializer
 
@@ -46,6 +51,7 @@ API V2 - ViewSets
 """
 
 class CursoViewSet(viewsets.ModelViewSet):
+    
     queryset = Curso.objects.all()
     serializer_class = CursoSerializer
 
@@ -63,7 +69,21 @@ class CursoViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
 class AvaliacaoViewSet(viewsets.ModelViewSet):
+
     queryset = Avaliacao.objects.all()
     serializer_class = AvaliacaoSerializer
 
 
+class MyNewView(generics.ListCreateAPIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    queryset = Curso.objects.all()
+    serializer_class = CursoSerializer
+
+class MyNewViewSet(viewsets.ModelViewSet):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    queryset = Curso.objects.all()
+    serializer_class = CursoSerializer
